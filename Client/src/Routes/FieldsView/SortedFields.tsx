@@ -8,7 +8,6 @@ export default function SortedFields(props: any) {
   const { fields, currentPosition, getTimeDifference } = props
   const [fieldsWithDistances, setFieldsWithDistances] = useState<IField[]>([])
   useEffect(() => {
-    console.log(fields)
     const fieldsWithDistances = fields.map((field: any) => {
       return {
         ...field, distance: getDistance(

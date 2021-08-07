@@ -74,8 +74,6 @@ const Mutation = new GraphQLObjectType({
         field_type: { type: GraphQLString },
       },
       resolve(parent, args) {
-        console.log("parent", parent);
-        console.log("args", args);
         addField(args);
       },
     },
@@ -88,9 +86,7 @@ const Mutation = new GraphQLObjectType({
         date: { type: GraphQLString },
       },
       resolve: async (parent, args) => {
-        console.log("args", args);
         const y = await addReservedField(args);
-        console.log("y", y);
         return y;
       },
     },

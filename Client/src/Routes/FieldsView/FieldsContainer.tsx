@@ -28,7 +28,6 @@ export default function FieldsContainer() {
     async function getReserved() {
       let response: any = await getReservedFields()
       response = await response.json()
-      console.log(response, 'res')
       setReservedFields(response.data.reservedfields)
     }
     getReserved()

@@ -18,15 +18,14 @@ const useStyles = makeStyles((theme) =>
 
     fieldContainer: {
       position: 'fixed',
-      height: '100%',
-      width: '100%',
-      overflow: 'hidden',
+      maxHeight: '150%',
+      overflow: 'scroll',
       '@media(max-width:600px)': {
         width: '100%',
       }
     },
     makeSpace: {
-      height: '34vh',
+      height: '37vh',
     },
 
     filter: {
@@ -88,7 +87,7 @@ export default function Fields(props: Props) {
             </form>
           </div>
           <div className={classes.fieldContainer}>
-            <Grid container justify={'space-evenly'} spacing={8} xs={12} lg={12} style={{ margin: 0, overflowY: 'scroll', width: '100%', height: '100%', boxSizing: 'content-box', paddingRight: 17 }}>
+            <Grid container justify={'space-evenly'} spacing={8} xs={12} lg={12} style={{ margin: 0, overflowY: 'scroll', boxSizing: 'content-box', paddingRight: 17 }}>
               {searchedFields.map((field: IField) => {
                 return (
                   <Grid container item={true} key={field.id} xs={12} lg={4}>

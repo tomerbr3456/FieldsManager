@@ -51,22 +51,31 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function FieldsViewBar() {
+export default function FieldsViewBar(props: any) {
+  const { onAddFieldForm } = props
   const classes = useStyles();
   const { isAuthenticated, user } = useAuth0();
-
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={'mui-fixed'} style={{ background: 'linear-gradient(to right, #4b6cb7, #182848)' }} >
+      <AppBar position="fixed" className={'mui-fixed'} style={{ background: '#3498DB ' }} >
         <Toolbar className={classes.toolBar}>
-          {/* <Button > */}
-          <Link className={classes.link} to="/NewFieldForm">
-            {'Add New Field'}
-          </Link>
-          {/* </Button> */}
-          <Typography variant="h6" className={classes.title}>
-            {'Fields Manager'}
-          </Typography>
+          {onAddFieldForm ?
+            <Link className={classes.link} to="/">
+              {'Reserve Field'}
+            </Link>
+            :
+            <Link className={classes.link} to="/NewFieldForm">
+              {'Add New Field'}
+            </Link>
+          }
+          {onAddFieldForm ?
+            <Typography variant="h6" className={classes.title}>
+              {'Add New Field'}
+            </Typography>
+            : <Typography variant="h6" className={classes.title}>
+              {'Fields Manager'}
+            </Typography>
+          }
           {user ?
             (<Typography variant="h5" className={classes.userName}>
               {user.name}

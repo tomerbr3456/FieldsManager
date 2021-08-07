@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme, createStyles, makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +11,7 @@ import { Button } from '@material-ui/core';
 import PlaceIcon from '@material-ui/icons/Place';
 import LockIcon from '@material-ui/icons/Lock';
 import { IReservedField } from '../../Types/ReservedField';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const red = 'linear-gradient(0deg, rgba(195,58,34,1) 0%, rgba(253,69,45,1) 87%)'
 const green = '#fff'
@@ -95,6 +97,7 @@ const useStyles = makeStyles((theme) => createStyles({
 
 export default function Field(props: Props) {
   const theme = useTheme()
+  const { isAuthenticated } = useAuth0()
   const classes = useStyles(theme);
   const { field, reservedFieldByUser, reservedFieldById, onHandleReserve, onHandleRelease, handleFieldClick } = props
 
@@ -167,8 +170,11 @@ export default function Field(props: Props) {
             <Button variant="contained" color={'primary'}
               className={classes.reservedButton} onClick={handleRelease}>
               {'release'}
-            </Button> : isReservedBySomeOneWhoIsntCurrentUser || reservedFieldByUser ?
-              <div /> :
+            </Button> : (isReservedBySomeOneWhoIsntCurrentUser || reservedFieldByUser || !isAuthenticated) ?
+              <Button variant="contained" color={'primary'}
+                className={classes.reservedButton} >
+                {'login to reserve'}
+              </Button> :
               <Button variant="contained" color={'primary'}
                 className={classes.reservedButton} onClick={handleReserve} >
                 {'reserve'}

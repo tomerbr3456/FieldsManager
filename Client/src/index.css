@@ -6,10 +6,10 @@ body{
 
 html { 
 margin: 0;
-background-image: url('./images/Background.svg');
-background-size: cover;
+background-color: #0d1b2f;
+/* background-image: url('./images/Background.svg'); */
+/* background-size: cover; */
 overflow-x: hidden;
-overflow:overlay;
 font-family:  "Roboto","Helvetica","Arial",sans-serif;
 font-weight: 700;
 
@@ -21,10 +21,6 @@ font-weight: 700;
 }
 
 ::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-  background: #FF0000;
+  width: 0; 
+  background: transparent;  
 }
